@@ -4,4 +4,4 @@ After: '#corefieldtypes'
 ---
 SilverStripe\Core\Injector\Injector:
   BinaryIP:
-    class: LeKoala\Base\ORM\FieldType\DBBinaryIP
+    class: LeKoala\CommonExtensions\FieldType\DBBinaryIP

@@ -1,6 +1,6 @@
 <?php
 
-namespace LeKoala\Base\ORM\FieldType;
+namespace LeKoala\CommonExtensions\FieldType;
 
 use Exception;
 use SilverStripe\ORM\DB;

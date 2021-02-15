@@ -3,7 +3,7 @@
 namespace LeKoala\CommonExtensions\Test;
 
 use SilverStripe\Dev\SapphireTest;
-use LeKoala\Base\Extensions\IPExtension;
+use LeKoala\CommonExtensions\IPExtension;
 
 class ExtensionsTest extends SapphireTest
 {
