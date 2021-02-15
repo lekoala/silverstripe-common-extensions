@@ -11,10 +11,10 @@ class ExtensionsTest extends SapphireTest
      * Defines the fixture file to use for this test class
      * @var string
      */
-    protected static $fixture_file = 'Test_BaseModel.yml';
+    protected static $fixture_file = 'Test_CommonExtensions.yml';
 
     protected static $extra_dataobjects = array(
-        Test_BaseModel::class,
+        Test_CommonExtensions::class,
     );
 
     public function testHasExtensions()
