@@ -4,6 +4,7 @@ namespace LeKoala\CommonExtensions\Test;
 
 use SilverStripe\Dev\SapphireTest;
 use LeKoala\CommonExtensions\IPExtension;
+use SilverStripe\Control\Controller;
 
 class ExtensionsTest extends SapphireTest
 {
@@ -26,12 +27,16 @@ class ExtensionsTest extends SapphireTest
 
     public function testIPExtension()
     {
+        $controller = Controller::curr();
+
         $model = new Test_CommonExtensions();
         $model->write();
-        $this->assertNotEmpty($model->Ip);
+        if ($controller) {
+            $this->assertNotEmpty($model->IP);
+        }
 
         $ip = '127.0.0.1';
-        $model->Ip = $ip;
-        $this->assertEquals($ip, $model->Ip);
+        $model->IP = $ip;
+        $this->assertEquals($ip, $model->IP);
     }
 }
