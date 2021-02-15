@@ -1,0 +1,52 @@
+{
+    "name": "lekoala/silverstripe-common-extensions",
+    "description": "A set of useful extensions for SilverStripe",
+    "type": "silverstripe-vendormodule",
+    "keywords": [
+        "silverstripe",
+        "extensions",
+        "module",
+        "cms"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "LeKoala",
+            "email": "thomas@lekoala.be"
+        }
+    ],
+    "require": {
+        "php": ">=7.2",
+        "silverstripe/recipe-plugin": "^1",
+        "silverstripe/recipe-cms": "^4.4",
+        "lekoala/silverstripe-cms-actions": "^1",
+        "lekoala/silverstripe-geotools": "^1"
+    },
+    "require-dev": {
+        "sminnee/phpunit": "^5.7",
+        "squizlabs/php_codesniffer": "^3.0"
+    },
+    "extra": {
+        "installer-name": "common-extensions",
+        "expose": [
+            "css",
+            "javascript"
+        ]
+    },
+    "autoload": {
+        "psr-4": {
+            "LeKoala\\CommonExtensions\\": "src/",
+            "LeKoala\\CommonExtensions\\Test\\": "tests/"
+        }
+    },
+    "support": {
+        "issues": "https://github.com/lekoala/silverstripe-common-extensions/issues"
+    },
+    "scripts": {
+        "lint": "phpcs src/ tests/",
+        "lint-clean": "phpcbf src/ tests/",
+        "test": "phpunit -v"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

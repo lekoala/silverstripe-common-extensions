@@ -1,0 +1,16 @@
+nl:
+  EmbeddableExtension:
+    EMBEDURL: 'Embed from URL'
+  SocialExtension:
+    DISCOVER: 'Ik vond'
+    SEE: 'Je kan het hier zien :'
+  URLSegmentExtension:
+    URLSEGMENT: 'URL Segment'
+  ValidationStatusExtension:
+    APPROVE: Goedkeuren
+    APPROVED: Goedgekeurd
+    DISABLE: Disable
+    DISABLED: Disabled
+    VALIDATION_STATUS_APPROVED: goedgekeurd
+    VALIDATION_STATUS_DISABLED: disabled
+    VALIDATION_STATUS_PENDING: 'in afwachting van goedkeuring'

@@ -1,0 +1,16 @@
+fr:
+  EmbeddableExtension:
+    EMBEDURL: 'Embed from URL'
+  SocialExtension:
+    DISCOVER: 'J''ai découvert'
+    SEE: 'Un aperçu :'
+  URLSegmentExtension:
+    URLSEGMENT: 'URL Segment'
+  ValidationStatusExtension:
+    APPROVE: Approuver
+    APPROVED: Approuvé
+    DISABLE: Désactiver
+    DISABLED: Désactivé
+    VALIDATION_STATUS_APPROVED: Approuvé
+    VALIDATION_STATUS_DISABLED: désactivé
+    VALIDATION_STATUS_PENDING: 'en cours d''approbation'

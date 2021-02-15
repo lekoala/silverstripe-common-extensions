@@ -1,0 +1,7 @@
+---
+Name: common-extensions-fieldtypes
+After: '#corefieldtypes'
+---
+SilverStripe\Core\Injector\Injector:
+  BinaryIP:
+    class: LeKoala\Base\ORM\FieldType\DBBinaryIP
