@@ -14,3 +14,5 @@ nl:
     VALIDATION_STATUS_APPROVED: goedgekeurd
     VALIDATION_STATUS_DISABLED: disabled
     VALIDATION_STATUS_PENDING: 'in afwachting van goedkeuring'
+    ACCOUNT_DISABLED: 'Uw account werd afgesloten.'
+    ACCOUNT_PENDING: 'Uw account wordt momenteel gevalideerd.'

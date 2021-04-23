@@ -8,6 +8,7 @@ use SilverStripe\Security\Member;
 use SilverStripe\ORM\DataExtension;
 use LeKoala\CmsActions\CustomAction;
 use SilverStripe\Security\Permission;
+use SilverStripe\ORM\ValidationResult;
 
 /**
  * Allow to enable/disable login for your objects based on status
@@ -49,6 +50,27 @@ class ValidationStatusExtension extends DataExtension
             return true;
         }
         return Permission::check('ADMIN', 'any', $member);
+    }
+
+    /**
+     * This is called by Member::validateCanLogin which is typically called in MemberAuthenticator::authenticate::authenticateMember
+     * which is used in LoginHandler::doLogin::checkLogin
+     *
+     * This means canLogIn is called before 2FA, for instance
+     *
+     * @param ValidationResult $result
+     * @return void
+     */
+    public function canLogIn(ValidationResult $result)
+    {
+        if ($this->owner->hasExtension(ValidationStatusExtension::class)) {
+            if ($this->owner->IsValidationStatusPending()) {
+                $result->addError(_t('ValidationStatusExtension.ACCOUNT_PENDING', "Your account is currently pending"));
+            }
+            if ($this->owner->IsValidationStatusDisabled()) {
+                $result->addError(_t('ValidationStatusExtension.ACCOUNT_DISABLED', "Your account has been disabled"));
+            }
+        }
     }
 
     public function updateCMSFields(FieldList $fields)

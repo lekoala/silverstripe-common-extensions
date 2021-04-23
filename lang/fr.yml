@@ -14,3 +14,5 @@ fr:
     VALIDATION_STATUS_APPROVED: Approuvé
     VALIDATION_STATUS_DISABLED: désactivé
     VALIDATION_STATUS_PENDING: 'en cours d''approbation'
+    ACCOUNT_DISABLED: 'Votre compte a été désactivé.'
+    ACCOUNT_PENDING: 'Votre compte est en cours d''approbation.'
