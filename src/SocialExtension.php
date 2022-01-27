@@ -33,6 +33,7 @@ class SocialExtension extends DataExtension
         "Instagram" => "Varchar(59)",
         "Pinterest" => "Varchar(59)",
     ];
+
     public function updateCMSFields(FieldList $fields)
     {
         $tab = new Tab('Social');

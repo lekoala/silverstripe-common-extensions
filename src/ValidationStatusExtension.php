@@ -9,19 +9,37 @@ use SilverStripe\ORM\DataExtension;
 use LeKoala\CmsActions\CustomAction;
 use SilverStripe\Security\Permission;
 use SilverStripe\ORM\ValidationResult;
+use SilverStripe\Security\LoginAttempt;
+use SilverStripe\Core\Config\Configurable;
+use SilverStripe\ORM\FieldType\DBDatetime;
 
 /**
  * Allow to enable/disable login for your objects based on status
  *
- * @property DataObject $owner
+ * @property DataObject|Member $owner
  * @property string $ValidationStatus
  */
 class ValidationStatusExtension extends DataExtension
 {
+    use Configurable;
+
     const VALIDATION_STATUS_PENDING = 'pending';
     const VALIDATION_STATUS_APPROVED = 'approved';
     const VALIDATION_STATUS_DISABLED = 'disabled';
 
+    /**
+     * A time string in the future (eg: +7 days) based on LastVisited column
+     * This require a LastVisited field on your Member class to be really accurate
+     * @config
+     * @var string
+     */
+    private static $account_expiration = null;
+
+    /**
+     * @config
+     * @var boolean
+     */
+    private static $status_prevent_login = true;
     private static $db = [
         "ValidationStatus" => "NiceEnum('pending,approved,disabled')"
     ];
@@ -63,7 +81,15 @@ class ValidationStatusExtension extends DataExtension
      */
     public function canLogIn(ValidationResult $result)
     {
-        if ($this->owner->hasExtension(ValidationStatusExtension::class)) {
+        if ($this->IsAccountExpired()) {
+            // This allows you to send an activation email if necessary
+            $this->owner->extend('onExpiredLoginAttempt');
+
+            $result->addError(_t('ValidationStatusExtension.ACCOUNT_EXPIRED', "Your account has expired"));
+        }
+
+        // Check general status
+        if (self::config()->get('status_prevent_login')) {
             if ($this->owner->IsValidationStatusPending()) {
                 $result->addError(_t('ValidationStatusExtension.ACCOUNT_PENDING', "Your account is currently pending"));
             }
@@ -71,6 +97,36 @@ class ValidationStatusExtension extends DataExtension
                 $result->addError(_t('ValidationStatusExtension.ACCOUNT_DISABLED', "Your account has been disabled"));
             }
         }
+    }
+
+    public function IsAccountExpired()
+    {
+        $account_expiration = self::config()->get("account_expiration");
+        if (!$account_expiration) {
+            return false;
+        }
+        $lastVisited = null;
+        if ($this->owner->hasField('LastVisited')) {
+            $lastVisited = $this->owner->LastVisited;
+        } else {
+            // Use last valid attempt as fallback
+            $lastValidAttempt = LoginAttempt::getByEmail($this->Email)
+                ->filter('Status', 'Success')
+                ->sort('Created', 'DESC')
+                ->first();
+            if ($lastValidAttempt) {
+                $lastVisited = $lastValidAttempt->Created;
+            }
+        }
+        // It needs at least one visit to be able to expire
+        if ($lastVisited) {
+            $checkTime = strtotime($account_expiration, strtotime($lastVisited));
+            // It has expired
+            if ($checkTime < DBDatetime::now()->getTimestamp()) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public function updateCMSFields(FieldList $fields)
@@ -97,11 +153,7 @@ class ValidationStatusExtension extends DataExtension
         $this->owner->ValidationStatus = self::VALIDATION_STATUS_APPROVED;
         $this->owner->write();
 
-        if ($this->owner->hasMethod('onValidationApprove')) {
-            $this->owner->onValidationApprove();
-        }
-
-        $auditID = $this->owner->audit('Validation Status Changed', ['Status' => self::VALIDATION_STATUS_APPROVED]);
+        $this->owner->extend('onValidationApprove');
 
         return _t('ValidationStatusExtension.APPROVED', 'Approved');
     }
@@ -111,11 +163,7 @@ class ValidationStatusExtension extends DataExtension
         $this->owner->ValidationStatus = self::VALIDATION_STATUS_DISABLED;
         $this->owner->write();
 
-        if ($this->owner->hasMethod('onValidationDisable')) {
-            $this->owner->onValidationDisable();
-        }
-
-        $auditID =  $this->owner->audit('Validation Status Changed', ['Status' => self::VALIDATION_STATUS_DISABLED]);
+        $this->owner->extend('onValidationDisable');
 
         return _t('ValidationStatusExtension.DISABLED', 'Disabled');
     }

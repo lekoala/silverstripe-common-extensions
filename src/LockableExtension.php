@@ -6,7 +6,6 @@ use SilverStripe\ORM\DataObject;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\ORM\DataExtension;
 use LeKoala\CmsActions\CustomAction;
-use SilverStripe\Forms\GridField\GridField;
 
 /**
  * Makes record locked

@@ -33,14 +33,14 @@ class IPExtension extends DataExtension
     }
 
     /**
-     * @return \LeKoala\GeoTools\Models\Address
+     * @return \LeKoala\GeoTools\Models\Address|null
      */
     public function getIpLocationDetails()
     {
-        $graphloc = Injector::inst()->get(\LeKoala\Geo\Services\Geolocator::class);
         if (!$this->owner->IP) {
             return false;
         }
-        return $graphloc->geolocate($this->owner->IP);
+        $geolocator = Injector::inst()->get(\LeKoala\Geo\Services\Geolocator::class);
+        return $geolocator->geolocate($this->owner->IP);
     }
 }

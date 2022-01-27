@@ -28,11 +28,17 @@ class OwnershipExtension extends DataExtension
         }
     }
 
+    /**
+     * @return bool
+     */
     public function IsOwner()
     {
         return $this->owner->OwnerID == Member::currentUserID();
     }
 
+    /**
+     * @return bool
+     */
     public function IsNotOwner()
     {
         return $this->owner->OwnerID != Member::currentUserID();

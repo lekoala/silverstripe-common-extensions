@@ -5,7 +5,6 @@ namespace LeKoala\CommonExtensions;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\Control\Controller;
 use SilverStripe\Core\Injector\Injector;
-use LeKoala\CommonExtensions\IPLocatorInterface;
 
 /**
  * Store IP as binary
@@ -31,14 +30,16 @@ class BinaryIPExtension extends DataExtension
     }
 
     /**
-     * @return \LeKoala\GeoTools\Models\Address
+     * This require geotools module
+     *
+     * @return \LeKoala\GeoTools\Models\Address|null
      */
     public function getIpLocationDetails()
     {
-        $graphloc = Injector::inst()->get(\LeKoala\Geo\Services\Geolocator::class);
         if (!$this->owner->IP) {
-            return false;
+            return null;
         }
-        return $graphloc->geolocate($this->owner->IP);
+        $geolocator = Injector::inst()->get(\LeKoala\Geo\Services\Geolocator::class);
+        return $geolocator->geolocate($this->owner->IP);
     }
 }

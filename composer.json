@@ -19,8 +19,10 @@
         "php": ">=7.2",
         "silverstripe/recipe-plugin": "^1",
         "silverstripe/recipe-cms": "^4.4",
-        "lekoala/silverstripe-cms-actions": "^1",
-        "lekoala/silverstripe-geotools": "^2"
+        "lekoala/silverstripe-cms-actions": "^1"
+    },
+    "suggest": {
+        "lekoala/silverstripe-geotools": "Enable ip location"
     },
     "require-dev": {
         "sminnee/phpunit": "^5.7",

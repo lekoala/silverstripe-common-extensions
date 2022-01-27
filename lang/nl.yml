@@ -1,6 +1,6 @@
 nl:
   EmbeddableExtension:
-    EMBEDURL: 'Embed from URL'
+    EMBEDURL: 'Embedden vanaf URL'
   SocialExtension:
     DISCOVER: 'Ik vond'
     SEE: 'Je kan het hier zien :'
@@ -16,3 +16,4 @@ nl:
     VALIDATION_STATUS_PENDING: 'in afwachting van goedkeuring'
     ACCOUNT_DISABLED: 'Uw account werd afgesloten.'
     ACCOUNT_PENDING: 'Uw account wordt momenteel gevalideerd.'
+    ACCOUNT_EXPIRED: 'Uw account wordt momenteel gevalideerd.'
