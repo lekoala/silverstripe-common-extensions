@@ -81,6 +81,10 @@ class ValidationStatusExtension extends DataExtension
      */
     public function canLogIn(ValidationResult $result)
     {
+        if (Permission::check('ADMIN', 'any', $this->owner)) {
+            return;
+        }
+
         if ($this->IsAccountExpired()) {
             // This allows you to send an activation email if necessary
             $this->owner->extend('onExpiredLoginAttempt');
