@@ -2,6 +2,7 @@
 
 namespace LeKoala\CommonExtensions;
 
+use SilverStripe\Control\Director;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\ORM\DataExtension;
@@ -77,6 +78,14 @@ class URLSegmentExtension extends DataExtension
             $url .= "/$action";
         }
         return $url;
+    }
+
+    /**
+     * @return string
+     */
+    public function AbsoluteLink()
+    {
+        return Director::absoluteURL($this->Link());
     }
 
     /**
