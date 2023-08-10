@@ -16,17 +16,17 @@
         }
     ],
     "require": {
-        "php": ">=7.2",
-        "silverstripe/recipe-plugin": "^1",
-        "silverstripe/recipe-cms": "^4.4",
+        "php": "^7.4 || ^8",
+        "silverstripe/recipe-plugin": "^1 || ^2",
+        "silverstripe/recipe-cms": "^4.4 || ^5",
         "lekoala/silverstripe-cms-actions": "^1"
     },
     "suggest": {
         "lekoala/silverstripe-geotools": "Enable ip location"
     },
     "require-dev": {
-        "sminnee/phpunit": "^5.7",
-        "squizlabs/php_codesniffer": "^3.0"
+        "phpunit/phpunit": "^9.5",
+        "squizlabs/php_codesniffer": "^3.5"
     },
     "extra": {
         "installer-name": "common-extensions"
