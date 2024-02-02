@@ -15,10 +15,16 @@ use SilverStripe\Core\Injector\Injector;
  */
 class IPExtension extends DataExtension
 {
+    /**
+     * @var array<string,string>
+     */
     private static $db = [
         "IP" => "Varchar(45)"
     ];
 
+    /**
+     * @return void
+     */
     public function onBeforeWrite()
     {
         if (!Controller::has_curr()) {
@@ -38,9 +44,12 @@ class IPExtension extends DataExtension
     public function getIpLocationDetails()
     {
         if (!$this->owner->IP) {
-            return false;
+            return null;
         }
-        $geolocator = Injector::inst()->get(\LeKoala\Geo\Services\Geolocator::class);
-        return $geolocator->geolocate($this->owner->IP);
+        if (interface_exists("\\LeKoala\\Geo\\Services\\Geolocator")) {
+            $geolocator = Injector::inst()->get("\\LeKoala\\Geo\\Services\\Geolocator");
+            return $geolocator->geolocate($this->owner->IP);
+        }
+        return null;
     }
 }
