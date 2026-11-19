@@ -5,7 +5,7 @@ namespace LeKoala\CommonExtensions;
 use SilverStripe\Control\Director;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\Forms\FieldList;
-use SilverStripe\ORM\DataExtension;
+use SilverStripe\Core\Extension;
 use SilverStripe\ORM\ValidationResult;
 use SilverStripe\View\Parsers\URLSegmentFilter;
 
@@ -17,7 +17,7 @@ use SilverStripe\View\Parsers\URLSegmentFilter;
  * @property DataObject $owner
  * @property string $URLSegment
  */
-class URLSegmentExtension extends DataExtension
+class URLSegmentExtension extends Extension
 {
     private static $db = [
         "URLSegment" => "Varchar(191)",

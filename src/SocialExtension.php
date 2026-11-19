@@ -5,7 +5,7 @@ namespace LeKoala\CommonExtensions;
 use SilverStripe\Forms\Tab;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\TextField;
-use SilverStripe\ORM\DataExtension;
+use SilverStripe\Core\Extension;
 
 /**
  * A typical social networks to a record
@@ -20,7 +20,7 @@ use SilverStripe\ORM\DataExtension;
  * @property string $Instagram
  * @property string $Pinterest
  */
-class SocialExtension extends DataExtension
+class SocialExtension extends Extension
 {
     //TODO: find a more flexible way to deal with various type of social networks
     private static $db = [

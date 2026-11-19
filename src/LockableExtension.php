@@ -4,7 +4,7 @@ namespace LeKoala\CommonExtensions;
 
 use SilverStripe\ORM\DataObject;
 use SilverStripe\Forms\FieldList;
-use SilverStripe\ORM\DataExtension;
+use SilverStripe\Core\Extension;
 use LeKoala\CmsActions\CustomAction;
 
 /**
@@ -15,7 +15,7 @@ use LeKoala\CmsActions\CustomAction;
  * @property \LeKoala\CommonExtensions\LockableExtension|DataObject $owner
  * @property boolean $IsLocked
  */
-class LockableExtension extends DataExtension
+class LockableExtension extends Extension
 {
     private static $db = [
         "IsLocked" => "Boolean"

@@ -4,7 +4,7 @@ namespace LeKoala\CommonExtensions;
 
 use SilverStripe\ORM\DataObject;
 use SilverStripe\Security\Member;
-use SilverStripe\ORM\DataExtension;
+use SilverStripe\Core\Extension;
 use SilverStripe\Security\Permission;
 
 /**
@@ -14,7 +14,7 @@ use SilverStripe\Security\Permission;
  * @property int $OwnerID
  * @method \SilverStripe\Security\Member Owner()
  */
-class OwnershipExtension extends DataExtension
+class OwnershipExtension extends Extension
 {
     private static $has_one = [
         "Owner" => Member::class,

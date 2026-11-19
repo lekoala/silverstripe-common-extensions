@@ -4,7 +4,7 @@ namespace LeKoala\CommonExtensions;
 
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\Director;
-use SilverStripe\ORM\DataExtension;
+use SilverStripe\Core\Extension;
 
 /**
  * Easily add share urls based on Link method
@@ -17,7 +17,7 @@ use SilverStripe\ORM\DataExtension;
  * @link http://www.sharelinkgenerator.com/
  * @property \SilverStripe\CMS\Model\SiteTree $owner
  */
-class SocialShareExtension extends DataExtension
+class SocialShareExtension extends Extension
 {
     protected function getSocialAbsoluteLink($obj)
     {

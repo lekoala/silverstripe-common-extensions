@@ -2,7 +2,7 @@
 
 namespace LeKoala\CommonExtensions;
 
-use SilverStripe\ORM\DataExtension;
+use SilverStripe\Core\Extension;
 use SilverStripe\Control\Controller;
 use SilverStripe\Core\Injector\Injector;
 
@@ -13,7 +13,7 @@ use SilverStripe\Core\Injector\Injector;
  * @property \LeKoala\CommonExtensions\IPExtension $owner
  * @property string $IP
  */
-class IPExtension extends DataExtension
+class IPExtension extends Extension
 {
     /**
      * @var array<string,string>

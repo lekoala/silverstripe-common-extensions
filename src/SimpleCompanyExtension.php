@@ -2,7 +2,7 @@
 
 namespace LeKoala\CommonExtensions;
 
-use SilverStripe\ORM\DataExtension;
+use SilverStripe\Core\Extension;
 
 /**
  * A simple company extension for Member
@@ -14,7 +14,7 @@ use SilverStripe\ORM\DataExtension;
  * @property string $CompanyName
  * @property string $VatNumber
  */
-class SimpleCompanyExtension extends DataExtension
+class SimpleCompanyExtension extends Extension
 {
     private static $db = [
         "CompanyName" => "Varchar(255)",

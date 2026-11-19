@@ -2,7 +2,7 @@
 
 namespace LeKoala\CommonExtensions;
 
-use SilverStripe\ORM\DataExtension;
+use SilverStripe\Core\Extension;
 use SilverStripe\Control\Controller;
 use SilverStripe\Core\Injector\Injector;
 
@@ -13,7 +13,7 @@ use SilverStripe\Core\Injector\Injector;
  * @property \BinaryIPExtension $owner
  * @property string $IP
  */
-class BinaryIPExtension extends DataExtension
+class BinaryIPExtension extends Extension
 {
     private static $db = [
         "IP" => "BinaryIP"

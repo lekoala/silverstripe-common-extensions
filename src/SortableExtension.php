@@ -5,7 +5,7 @@ namespace LeKoala\CommonExtensions;
 use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\Forms\FieldList;
-use SilverStripe\ORM\DataExtension;
+use SilverStripe\Core\Extension;
 
 /**
  * Make a DataObject sortable with GridFieldOrderableRows
@@ -13,7 +13,7 @@ use SilverStripe\ORM\DataExtension;
  * @property DataObject $owner
  * @property int $Sort
  */
-class SortableExtension extends DataExtension
+class SortableExtension extends Extension
 {
     private static $db = [
         "Sort" => "Int",

@@ -4,7 +4,7 @@ namespace LeKoala\CommonExtensions;
 
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Security\Member;
-use SilverStripe\ORM\DataExtension;
+use SilverStripe\Core\Extension;
 use SilverStripe\Security\Security;
 
 /**
@@ -16,7 +16,7 @@ use SilverStripe\Security\Security;
  * @method \SilverStripe\Security\Member CreatedBy()
  * @method \SilverStripe\Security\Member LastEditedBy()
  */
-class EditorTrackingExtension extends DataExtension
+class EditorTrackingExtension extends Extension
 {
     private static $has_one = [
         "CreatedBy" => Member::class,

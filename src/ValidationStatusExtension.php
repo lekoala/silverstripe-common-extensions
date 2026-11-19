@@ -5,7 +5,7 @@ namespace LeKoala\CommonExtensions;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Security\Member;
-use SilverStripe\ORM\DataExtension;
+use SilverStripe\Core\Extension;
 use LeKoala\CmsActions\CustomAction;
 use SilverStripe\Security\Permission;
 use SilverStripe\ORM\ValidationResult;
@@ -19,7 +19,7 @@ use SilverStripe\ORM\FieldType\DBDatetime;
  * @property DataObject|Member $owner
  * @property string $ValidationStatus
  */
-class ValidationStatusExtension extends DataExtension
+class ValidationStatusExtension extends Extension
 {
     use Configurable;
 

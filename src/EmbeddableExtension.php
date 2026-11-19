@@ -6,7 +6,7 @@ use Exception;
 use Embed\Embed;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\Forms\FieldList;
-use SilverStripe\ORM\DataExtension;
+use SilverStripe\Core\Extension;
 use SilverStripe\ORM\ValidationResult;
 
 /**
@@ -15,7 +15,7 @@ use SilverStripe\ORM\ValidationResult;
  * @property DataObject|\LeKoala\CommonExtensions\EmbeddableExtension $owner
  * @property string $EmbedURL
  */
-class EmbeddableExtension extends DataExtension
+class EmbeddableExtension extends Extension
 {
     private static $db = [
         "EmbedURL" => "Varchar(255)"
