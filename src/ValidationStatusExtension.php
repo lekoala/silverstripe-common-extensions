@@ -8,7 +8,7 @@ use SilverStripe\Security\Member;
 use SilverStripe\Core\Extension;
 use LeKoala\CmsActions\CustomAction;
 use SilverStripe\Security\Permission;
-use SilverStripe\ORM\ValidationResult;
+use SilverStripe\Core\Validation\ValidationResult;
 use SilverStripe\Security\LoginAttempt;
 use SilverStripe\Core\Config\Configurable;
 use SilverStripe\ORM\FieldType\DBDatetime;

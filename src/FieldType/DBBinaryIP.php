@@ -25,7 +25,7 @@ class DBBinaryIP extends DBField
     const IP_V4_OCTETS = 4;
     const IP_V6_OCTETS = 16;
 
-    public function requireField()
+    public function requireField(): void
     {
         // Use direct sql statement here
         $sql = "binary(16)";
@@ -82,12 +82,12 @@ class DBBinaryIP extends DBField
         return $long;
     }
 
-    public function scaffoldFormField($title = null, $params = null)
+    public function scaffoldFormField($title = null, $params = []): ?\SilverStripe\Forms\FormField
     {
-        return false;
+        return null;
     }
 
-    public function nullValue()
+    public function nullValue(): mixed
     {
         return null;
     }
@@ -145,7 +145,7 @@ class DBBinaryIP extends DBField
         return $reversePointer;
     }
 
-    public function prepValueForDB($value)
+    public function prepValueForDB($value): mixed
     {
         if (!$value) {
             return $this->nullValue();

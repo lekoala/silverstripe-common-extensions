@@ -27,10 +27,10 @@ class IPExtension extends Extension
      */
     public function onBeforeWrite()
     {
-        if (!Controller::has_curr()) {
+        $controller = Controller::curr();
+        if (!$controller) {
             return;
         }
-        $controller = Controller::curr();
         // This is best used when IP is set on creation
         if (!$this->owner->IP) {
             $ip = $controller->getRequest()->getIP();

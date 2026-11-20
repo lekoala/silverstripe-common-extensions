@@ -7,7 +7,7 @@ use Embed\Embed;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Core\Extension;
-use SilverStripe\ORM\ValidationResult;
+use SilverStripe\Core\Validation\ValidationResult;
 
 /**
  * Embed external url on this data object
@@ -43,7 +43,7 @@ class EmbeddableExtension extends Extension
         }
     }
 
-    public function validate(ValidationResult $validationResult)
+    protected function updateValidate(ValidationResult $validationResult): void
     {
         if ($this->owner->EmbedURL) {
             try {

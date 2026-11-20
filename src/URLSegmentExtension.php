@@ -6,7 +6,7 @@ use SilverStripe\Control\Director;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Core\Extension;
-use SilverStripe\ORM\ValidationResult;
+use SilverStripe\Core\Validation\ValidationResult;
 use SilverStripe\View\Parsers\URLSegmentFilter;
 
 /**
@@ -94,7 +94,7 @@ class URLSegmentExtension extends Extension
      * @param ValidationResult $validationResult
      * @return void
      */
-    public function validate(ValidationResult $validationResult)
+    protected function updateValidate(ValidationResult $validationResult): void
     {
         $duplicate = $this->getDuplicateRecord();
         if ($duplicate) {
